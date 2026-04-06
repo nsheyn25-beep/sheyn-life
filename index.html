@@ -474,11 +474,60 @@ svg#goals-graph:active{cursor:grabbing;}
 
 /* ══ ASSISTANT SCREEN ══ */
 #screen-assistant{flex-direction:column;}
-.asst-coming{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px;}
-.asst-icon{font-size:52px;opacity:.35;}
-.asst-title{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--text2);}
-.asst-desc{font-size:12px;color:var(--text3);line-height:1.7;max-width:340px;}
-.asst-badge{background:rgba(124,106,247,.12);border:1px solid rgba(124,106,247,.25);color:var(--accent2);font-size:11px;border-radius:9px;padding:8px 18px;letter-spacing:.06em;}
+.asst-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg2);flex-shrink:0;}
+.asst-tab{flex:1;padding:12px 4px;text-align:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;}
+.asst-tab.active{color:var(--accent2);border-bottom-color:var(--accent);}
+.asst-pane{display:none;flex:1;flex-direction:column;overflow:hidden;}
+.asst-pane.active{display:flex;}
+
+/* chat */
+.asst-msgs{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
+.asst-msgs::-webkit-scrollbar{width:3px;}
+.asst-welcome{display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 16px 10px;}
+.asst-chips{display:flex;flex-direction:column;gap:7px;margin-top:16px;width:100%;max-width:340px;}
+.asst-chip{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 14px;font-size:11px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;}
+.asst-chip:hover{border-color:var(--accent);color:var(--accent2);}
+.amsg{display:flex;gap:9px;max-width:100%;}
+.amsg.user{flex-direction:row-reverse;}
+.amsg-av{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.amsg-av.ai{background:rgba(136,117,255,.15);border:1px solid rgba(136,117,255,.2);}
+.amsg-av.user{background:rgba(61,220,132,.1);border:1px solid rgba(61,220,132,.15);}
+.amsg-bubble{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:9px 13px;font-size:12px;color:var(--text2);line-height:1.65;max-width:88%;}
+.amsg.user .amsg-bubble{background:rgba(136,117,255,.1);border-color:rgba(136,117,255,.2);color:var(--text);}
+.amsg-time{font-size:9px;color:var(--text3);margin-top:3px;}
+.atyping span{width:5px;height:5px;border-radius:50%;background:var(--text3);display:inline-block;margin:0 2px;animation:adot .9s ease-in-out infinite;}
+.atyping span:nth-child(2){animation-delay:.2s;}
+.atyping span:nth-child(3){animation-delay:.4s;}
+@keyframes adot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+/* action result pill */
+.aaction-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(61,220,132,.09);border:1px solid rgba(61,220,132,.22);border-radius:7px;padding:4px 9px;font-size:10px;color:var(--green);margin:3px 2px;cursor:default;}
+/* input */
+.asst-input-bar{padding:10px 14px 14px;background:var(--bg);border-top:1px solid var(--border);display:flex;gap:8px;flex-shrink:0;}
+.asst-input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:10px 13px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;resize:none;min-height:44px;max-height:120px;transition:border-color .2s;line-height:1.4;}
+.asst-input:focus{border-color:var(--accent);}
+.asst-send{width:44px;height:44px;border-radius:12px;background:var(--accent);border:none;color:#fff;font-size:20px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.asst-send:hover{background:var(--accent2);}
+.asst-send:disabled{opacity:.35;cursor:not-allowed;}
+
+/* checkin */
+.asst-checkin-wrap{flex:1;overflow-y:auto;padding:18px 16px;}
+.asst-checkin-header{text-align:center;padding-bottom:20px;}
+.checkin-q-card{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:16px;margin-bottom:10px;}
+.checkin-q-card.active{border-color:rgba(136,117,255,.35);background:rgba(136,117,255,.04);}
+.checkin-q-card.done{opacity:.5;}
+.checkin-q-num{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;}
+.checkin-q-text{font-size:13px;color:var(--text);margin-bottom:10px;line-height:1.5;}
+.checkin-q-inp{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:9px 11px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none;resize:none;min-height:68px;transition:border-color .2s;}
+.checkin-q-inp:focus{border-color:var(--accent);}
+.checkin-q-ans{font-size:12px;color:var(--text2);font-style:italic;margin-top:4px;}
+.checkin-next-btn{margin-top:9px;background:var(--accent);border:none;color:#fff;border-radius:9px;padding:9px 18px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;}
+.checkin-next-btn:hover{background:var(--accent2);}
+.checkin-done-box{background:rgba(61,220,132,.07);border:1px solid rgba(61,220,132,.22);border-radius:13px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.checkin-result-box{background:rgba(136,117,255,.06);border:1px solid rgba(136,117,255,.2);border-radius:13px;padding:16px;margin-top:12px;}
+.checkin-result-title{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--accent2);margin-bottom:8px;}
+/* streak urgency */
+@keyframes streakPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.streak-urgent .streak-flame{animation:streakPulse .6s ease-in-out infinite!important;}
 
 /* ══ OVERLAYS / MODALS ══ */
 .overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;}
@@ -562,7 +611,7 @@ body.light{
 .theme-toggle:hover{border-color:var(--border2);}
 .sync-dot.none{background:var(--text3);}
 .sync-dot.ok{background:var(--green);box-shadow:0 0 5px rgba(61,220,132,.5);}
-.sync-dot.syncing{background:var(--yellow);animation:spulse 1s ease-in-out infinite;}
+.sync-dot.syncing{background:var(--yellow);animation:spulse .9s ease-in-out infinite;}
 .sync-dot.err{background:var(--red);}
 @keyframes spulse{0%,100%{opacity:1}50%{opacity:.3}}
 
@@ -673,11 +722,12 @@ body.light{
     <div class="topbar-logo" style="cursor:pointer" onclick="openProfileEdit()">SHEYN<span>.LIFE</span></div>
     <div class="topbar-sep"></div>
     <div class="topbar-date" id="topbar-date"></div>
-    <div style="font-size:9px;color:var(--text3);letter-spacing:.06em;opacity:.5;margin-right:4px;">v1.10</div>
-    <div id="sync-btn" onclick="openSyncModal()" title="Синхронизация" style="display:flex;align-items:center;gap:5px;cursor:pointer;padding:5px 9px;border-radius:8px;border:1px solid var(--border);transition:all .2s;flex-shrink:0;margin-right:4px;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+    <div style="font-size:9px;color:var(--text3);letter-spacing:.06em;opacity:.5;margin-right:2px;">v1.11.2</div>
+    <div id="sync-btn" onclick="openSettingsModal('sync')" title="Синхронизация" style="display:flex;align-items:center;gap:4px;cursor:pointer;padding:5px 8px;border-radius:8px;border:1px solid var(--border);transition:all .2s;flex-shrink:0;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
       <div class="sync-dot none" id="sync-dot" style="width:7px;height:7px;border-radius:50%;flex-shrink:0;transition:background .3s;"></div>
-      <span id="sync-lbl" style="font-size:9px;color:var(--text3);letter-spacing:.04em;white-space:nowrap;">Офлайн</span>
+      <span id="sync-lbl" style="font-size:9px;color:var(--text3);white-space:nowrap;max-width:80px;overflow:hidden;text-overflow:ellipsis;">Офлайн</span>
     </div>
+    <div onclick="openSettingsModal('ai')" title="Настройки AI" style="width:30px;height:30px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .2s;flex-shrink:0;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'" id="ai-key-btn">⚙</div>
     <div class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Переключить тему">🌙</div>
   </div>
 
@@ -735,19 +785,19 @@ body.light{
           <div class="fin-sub" id="home-bal-sub">Баланс не указан</div>
           <div class="fin-btns">
             <div class="fin-btn p" onclick="event.stopPropagation();nav('finance')">Таблица →</div>
-            <div class="fin-btn" onclick="event.stopPropagation();aiPlaceholder()">AI совет</div>
+            <div class="fin-btn" onclick="event.stopPropagation();asstFinAdvice()">AI совет</div>
           </div>
         </div>
       </div>
 
       <!-- AI banner -->
-      <div class="ai-banner" onclick="nav('assistant')">
-        <div class="ai-banner-icon">🤖</div>
+      <div class="ai-banner" id="home-checkin-banner" onclick="openCheckin()">
+        <div class="ai-banner-icon" id="checkin-banner-icon">🌙</div>
         <div class="ai-banner-text">
           <div class="ai-banner-title">Ежедневный чекин</div>
-          <div class="ai-banner-sub" id="home-checkin-sub">AI помощник — доступен скоро</div>
+          <div class="ai-banner-sub" id="home-checkin-sub">Расскажи как прошёл день</div>
         </div>
-        <div class="ai-badge">AI</div>
+        <div class="ai-badge" id="checkin-streak-badge">AI</div>
         <div class="ai-arrow">›</div>
       </div>
 
@@ -857,13 +907,13 @@ body.light{
         <div style="font-size:10px;color:var(--text3);margin-top:8px">Отображается на главном экране</div>
       </div>
 
-      <div class="fin-ai-card" onclick="aiPlaceholder()">
+      <div class="fin-ai-card" onclick="asstFinAdvice()">
         <div class="ai-banner-icon">🤖</div>
         <div class="ai-banner-text">
           <div class="ai-banner-title">AI финансовый советник</div>
           <div class="ai-banner-sub">Советы по распределению денег и стратегии</div>
         </div>
-        <div class="ai-badge">СКОРО</div>
+        <div class="ai-badge">AI</div>
       </div>
     </div>
   </div>
@@ -879,11 +929,45 @@ body.light{
 
   <!-- ASSISTANT -->
   <div class="screen" id="screen-assistant">
-    <div class="asst-coming">
-      <div class="asst-icon">🤖</div>
-      <div class="asst-title">AI Помощник</div>
-      <div class="asst-desc">Ежедневный чекин, формирование задач, советы по целям и финансам — всё это будет доступно после подключения Claude API.</div>
-      <div class="asst-badge">БУДЕТ ДОСТУПЕН ПОЗЖЕ</div>
+    <!-- MODE TABS -->
+    <div class="asst-tabs">
+      <div class="asst-tab active" data-tab="chat" onclick="asstTab('chat')">💬 Помощник</div>
+      <div class="asst-tab" data-tab="checkin" onclick="asstTab('checkin')">🌙 Чекин</div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="asst-pane active" id="asst-pane-chat">
+      <div class="asst-msgs" id="asst-msgs">
+        <div class="asst-welcome" id="asst-welcome">
+          <div style="font-size:36px;margin-bottom:10px;">🤖</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px;">AI Помощник</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.7;max-width:300px;">Я знаю твои цели и задачи. Попроси добавить цель, разбить её на подзадачи, поставить повторяющуюся задачу — и я сделаю это сам.</div>
+          <div class="asst-chips" id="asst-chips">
+            <div class="asst-chip" onclick="asstQuick('Хочу начать заниматься спортом — помоги поставить цель и задачи')">🏋️ Добавь спортивную цель</div>
+            <div class="asst-chip" onclick="asstQuick('Проанализируй мои текущие цели и дай совет')">📊 Анализ целей</div>
+            <div class="asst-chip" onclick="asstQuick('Что мне стоит сделать сегодня исходя из моих целей?')">⚡ Задачи на сегодня</div>
+            <div class="asst-chip" onclick="asstQuick('Дай совет по финансам и продуктивности')">💡 Совет дня</div>
+          </div>
+        </div>
+      </div>
+      <div class="asst-input-bar">
+        <textarea class="asst-input" id="asst-input" placeholder="Напиши запрос..." rows="1"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();asstSend();}"
+          oninput="this.style.height='';this.style.height=Math.min(this.scrollHeight,120)+'px'"></textarea>
+        <button class="asst-send" id="asst-send" onclick="asstSend()">›</button>
+      </div>
+    </div>
+
+    <!-- CHECKIN -->
+    <div class="asst-pane" id="asst-pane-checkin">
+      <div class="asst-checkin-wrap" id="asst-checkin-wrap">
+        <div class="asst-checkin-header">
+          <div style="font-size:36px;margin-bottom:8px;" id="checkin-header-icon">🌙</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;margin-bottom:4px;">Ежедневный чекин</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.6;" id="checkin-header-sub">Расскажи как прошёл день — AI запомнит и учтёт в советах</div>
+        </div>
+        <div id="checkin-body"></div>
+      </div>
     </div>
   </div>
 
@@ -1087,46 +1171,35 @@ body.light{
 
 <script>
 // ══════════════════════════════════════
-// DB
+// DB  +  SYNC (GitHub Gist)
 // ══════════════════════════════════════
-const SYNC_KEYS=['profile','gnodes','gnid','gsid','tasks','xp','streak','achs','fin_balance','fin_link','avatarColor','avatarImg','visited_screens','theme'];
+const SYNC_KEYS=['profile','gnodes','gnid','gsid','tasks','xp','streak','achs',
+  'fin_balance','fin_link','avatarColor','avatarImg','visited_screens','theme',
+  'checkin_history','last_checkin_date','last_checkin_result'];
 
 const DB={
   get(k,d){try{const v=localStorage.getItem('sl_'+k);return v?JSON.parse(v):d;}catch{return d;}},
-  set(k,v){try{localStorage.setItem('sl_'+k,JSON.stringify(v));}catch{}; if(SYNC_KEYS.includes(k))Sync.schedulePush();}
+  set(k,v){try{localStorage.setItem('sl_'+k,JSON.stringify(v));}catch{};if(SYNC_KEYS.includes(k))Sync.schedulePush();}
 };
 
-// ══════════════════════════════════════
-// SYNC — GitHub Gist
-// ══════════════════════════════════════
 const Sync={
-  TK:'sl__tk', GI:'sl__gi', TS:'sl__ts',
-  _timer:null, _busy:false,
+  TK:'sl__tk',GI:'sl__gi',TS:'sl__ts',
+  _t:null,_busy:false,
   get token(){return localStorage.getItem(this.TK)||'';},
   get gistId(){return localStorage.getItem(this.GI)||'';},
   get ok(){return !!(this.token&&this.gistId);},
   save(t,g){localStorage.setItem(this.TK,t);localStorage.setItem(this.GI,g);},
   clear(){localStorage.removeItem(this.TK);localStorage.removeItem(this.GI);},
-  export(){
-    const d={_v:2,_ts:Date.now()};
-    SYNC_KEYS.forEach(k=>{const v=localStorage.getItem('sl_'+k);if(v!==null)d[k]=v;});
-    return d;
-  },
+  export(){const d={_v:2,_ts:Date.now()};SYNC_KEYS.forEach(k=>{const v=localStorage.getItem('sl_'+k);if(v!==null)d[k]=v;});return d;},
   import(d){if(!d||!d._v)return false;SYNC_KEYS.forEach(k=>{if(d[k]!==undefined)localStorage.setItem('sl_'+k,d[k]);});return true;},
   setStatus(state,txt){
     const dot=document.getElementById('sync-dot'),lbl=document.getElementById('sync-lbl');
-    if(!dot)return;
-    dot.className='sync-dot '+state;
-    if(lbl)lbl.textContent=txt;
+    if(!dot)return;dot.className='sync-dot '+state;if(lbl)lbl.textContent=txt;
   },
-  schedulePush(){
-    if(!this.ok)return;
-    clearTimeout(this._timer);
-    this._timer=setTimeout(()=>this.push(),3000);
-  },
+  schedulePush(){if(!this.ok)return;clearTimeout(this._t);this._t=setTimeout(()=>this.push(),3000);},
   async push(){
     if(!this.ok||this._busy)return;
-    this._busy=true; this.setStatus('syncing','Сохранение...');
+    this._busy=true;this.setStatus('syncing','Сохранение...');
     try{
       const r=await fetch(`https://api.github.com/gists/${this.gistId}`,{
         method:'PATCH',
@@ -1136,31 +1209,23 @@ const Sync={
       if(!r.ok)throw new Error(r.status);
       localStorage.setItem(this.TS,Date.now());
       this.setStatus('ok','Синхронизировано');
-    }catch(e){this.setStatus('err','Ошибка сохранения');}
+    }catch(e){this.setStatus('err','Ошибка сохр.');}
     this._busy=false;
   },
   async pull(){
     if(!this.ok)return false;
     this.setStatus('syncing','Загрузка...');
     try{
-      const r=await fetch(`https://api.github.com/gists/${this.gistId}`,{
-        headers:{Authorization:`token ${this.token}`}
-      });
+      const r=await fetch(`https://api.github.com/gists/${this.gistId}`,{headers:{Authorization:`token ${this.token}`}});
       if(!r.ok)throw new Error(r.status);
       const g=await r.json();
       const content=g.files?.['sheyn_data.json']?.content;
       if(!content)return false;
       const remote=JSON.parse(content);
       const localTs=Number(localStorage.getItem(this.TS)||0);
-      if((remote._ts||0)>localTs){
-        this.import(remote);
-        localStorage.setItem(this.TS,remote._ts);
-        this.setStatus('ok','Данные загружены');
-        return true;
-      }
-      this.setStatus('ok','Актуально');
-      return false;
-    }catch(e){this.setStatus('err','Нет соединения');return false;}
+      if((remote._ts||0)>localTs){this.import(remote);localStorage.setItem(this.TS,remote._ts);this.setStatus('ok','Загружено');return true;}
+      this.setStatus('ok','Актуально');return false;
+    }catch(e){this.setStatus('err','Нет связи');return false;}
   },
   async createGist(token){
     const r=await fetch('https://api.github.com/gists',{
@@ -1169,7 +1234,7 @@ const Sync={
       body:JSON.stringify({description:'SHEYN.LIFE data',public:false,files:{'sheyn_data.json':{content:JSON.stringify({_v:2,_ts:0})}}})
     });
     if(!r.ok)throw new Error('HTTP '+r.status);
-    return (await r.json()).id;
+    return(await r.json()).id;
   }
 };
 
@@ -2086,16 +2151,372 @@ function renderAchievements(){
 }
 
 // ══════════════════════════════════════
-// AI PLACEHOLDER
+// AI ENGINE — OpenRouter
 // ══════════════════════════════════════
-function aiPlaceholder(){
-  document.getElementById('confirm-text').innerHTML='<span style="font-size:24px">🤖</span><br><br>AI-помощник будет доступен позже.<br><span style="font-size:11px;color:var(--text3)">Для работы потребуется API ключ Anthropic.</span>';
-  document.getElementById('confirm-overlay').classList.add('open');
-  // override confirm button to just close
-  document.querySelector('.btn-del').textContent='OK';
-  document.querySelector('.btn-del').onclick=closeConfirm;
-  document.querySelector('.btn-cancel').style.display='none';
+const AI_URL='https://openrouter.ai/api/v1/chat/completions';
+const AI_MODEL='nvidia/nemotron-3-super-120b-a12b:free';
+function getAIKey(){return localStorage.getItem('sl__ai_key')||'';}
+function hasAIKey(){return!!getAIKey();}
+
+// Chat history (in-session)
+let asstHistory=[];
+let asstBusy=false;
+
+// Checkin state
+const CHECKIN_QS=[
+  {id:'day',   q:'Как прошёл сегодняшний день? Что удалось, что не вышло?'},
+  {id:'tasks', q:'Какие задачи выполнил сегодня? Что осталось несделанным?'},
+  {id:'mood',  q:'Твоё состояние и настрой сегодня? (энергия, фокус, мотивация)'},
+  {id:'money', q:'Были ли сегодня доходы или крупные расходы?'},
+  {id:'next',  q:'Что самое важное нужно сделать завтра?'},
+];
+let checkinStep=0;
+let checkinAnswers={};
+
+function buildSystemPrompt(){
+  const goals=goalNodes.filter(n=>n.type==='goal'&&!n.locked);
+  const subs=goalNodes.filter(n=>n.type==='sub');
+  const goalTasks=goalNodes.filter(n=>n.type==='task');
+  const todayTasks=getDailyTasks();
+  const history=DB.get('checkin_history',[]).slice(-5);
+  const p=profile||{};
+  const bal=DB.get('fin_balance','');
+
+  const goalsStr=goals.map(g=>`${g.label}[${g.id}]${getGoalProgress(g)||0}%`).join(', ')||'нет';
+  const subsStr=subs.map(s=>`${s.label}[${s.id}]→[${s.parent}]`).join(', ')||'нет';
+  const gtStr=goalTasks.map(t=>`${t.label}[${t.id}]→[${t.parent}]`).join(', ')||'нет';
+  const todayStr=todayTasks.map(t=>`[${t.done?'✓':'○'}]${t.name}`).join(', ')||'нет';
+  const histStr=history.map(h=>`[${h.date}]${h.summary}`).join(' | ')||'нет';
+
+  return `Ты AI-ассистент SHEYN.LIFE. Отвечай по-русски, кратко.
+ПРОФИЛЬ: ${p.name||'?'} | работа:${p.work||'?'} | цель:${p.mainGoal||'?'} | баланс:${bal||'?'}
+ЦЕЛИ: ${goalsStr}
+ПОДЦЕЛИ: ${subsStr}
+ЗАДАЧИ_ГРАФА: ${gtStr}
+СЕГОДНЯ: ${todayStr}
+ИСТОРИЯ: ${histStr}
+ДАТА: ${NOW.toLocaleDateString('ru-RU',{weekday:'short',day:'numeric',month:'short'})}
+
+ПРАВИЛА:
+1. Если просят добавить цель/задачи — уточни ОДИН раз, потом выполни
+2. Когда план согласован — добавь JSON-блок в конец:
+\`\`\`actions
+{"actions":[
+{"type":"add_goal","label":"...","cat":"work|life","desc":"..."},
+{"type":"add_sub","goalId":"ID","label":"..."},
+{"type":"add_goal_task","subId":"ID_подцели","label":"...","due":"YYYY-MM-DD","priority":"normal|high|low"},
+{"type":"add_goal_subtask","taskId":"ID_задачи_графа","text":"..."},
+{"type":"add_task","name":"...","taskType":"daily|upcoming|monthly","repeat":"none|daily|weekly|weekdays","priority":"normal|high|low","due":"YYYY-MM-DD"}
+]}
+\`\`\`
+ТИПЫ: add_goal_task→задача в граф (часть цели, subId=id подцели). add_task→только в задачник (повторяющиеся, бытовые). add_goal_subtask→чекбокс к задаче графа.
+3. ID берёшь точно из списков выше (n101 и т.д.)
+4. Будь честен, не льсти`;
 }
+
+async function callAI(messages){
+  const key=getAIKey();
+  if(!key)throw new Error('AI ключ не настроен — нажми ⚙ в топбаре');
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),30000); // 30s timeout
+  try{
+    const r=await fetch(AI_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key,'HTTP-Referer':'https://sheyn.life','X-Title':'SHEYN.LIFE'},
+      body:JSON.stringify({model:AI_MODEL,messages,max_tokens:2000,temperature:0.7}),
+      signal:controller.signal
+    });
+    clearTimeout(timeout);
+    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.error?.message||'HTTP '+r.status);}
+    const d=await r.json();
+    const content=d.choices?.[0]?.message?.content||'';
+    if(!content)throw new Error('Пустой ответ от модели. Попробуй ещё раз.');
+    return content;
+  }catch(e){
+    clearTimeout(timeout);
+    if(e.name==='AbortError')throw new Error('Время ожидания истекло (30с). Модель не ответила — попробуй снова.');
+    throw e;
+  }
+}
+
+// Parse and execute actions from AI response
+function execActions(raw){
+  const match=raw.match(/```actions\s*([\s\S]*?)```/);
+  if(!match)return[];
+  let actions;
+  try{actions=JSON.parse(match[1].trim()).actions;}catch{return[];}
+  const results=[];
+  // Keep a map of temp labels to created node ids so forward-references work
+  // (AI may reference a node it just created in the same actions block)
+  const createdIds={}; // label → id, for fallback resolution
+
+  for(const a of actions){
+    if(a.type==='add_goal'){
+      const nn={id:'n'+(++gnIdCtr),label:a.label,type:'goal',cat:a.cat||'work',x:(Math.random()-.5)*400,y:(Math.random()-.5)*200,desc:a.desc||'',parent:null,locked:false,unlockReq:'',subtasks:undefined,level:1};
+      goalNodes.push(nn);ensureGP(nn);
+      createdIds[a.label]=nn.id;
+      results.push({icon:'🎯',text:'Цель: '+a.label,id:nn.id});
+
+    } else if(a.type==='add_sub'){
+      // goalId can be real id or fall back to last created goal
+      const par=goalNodes.find(n=>n.id===a.goalId)
+             || goalNodes.find(n=>n.id===createdIds[a.goalLabel])
+             || goalNodes.filter(n=>n.type==='goal').slice(-1)[0];
+      if(par){
+        const nn={id:'n'+(++gnIdCtr),label:a.label,type:'sub',cat:par.cat||'work',x:par.x+(Math.random()-.5)*200,y:par.y+120+Math.random()*60,desc:'',parent:par.id,locked:false,subtasks:undefined};
+        goalNodes.push(nn);ensureGP(nn);
+        createdIds[a.label]=nn.id;
+        results.push({icon:'◎',text:'Подцель: '+a.label,id:nn.id});
+      }
+
+    } else if(a.type==='add_goal_task'){
+      // Task node INSIDE the goal graph, child of a sub node
+      const par=goalNodes.find(n=>n.id===a.subId)
+             || goalNodes.find(n=>n.id===createdIds[a.subLabel])
+             || goalNodes.filter(n=>n.type==='sub').slice(-1)[0];
+      if(par){
+        const nn={id:'n'+(++gnIdCtr),label:a.label,type:'task',cat:par.cat||'work',x:par.x+(Math.random()-.5)*160,y:par.y+100+Math.random()*50,desc:'',parent:par.id,locked:false,subtasks:[],due:a.due||undefined,priority:a.priority||'normal'};
+        goalNodes.push(nn);ensureGP(nn);
+        createdIds[a.label]=nn.id;
+        results.push({icon:'✦',text:'Задача в графе: '+a.label,id:nn.id});
+        // If has due date — also sync to tasknik
+        if(a.due){
+          const ttype=a.due===TODAY_ISO?'daily':'upcoming';
+          const synced={id:uid(),goalNodeId:nn.id,name:a.label,type:ttype,priority:a.priority||'normal',due:a.due,repeat:'none',createdDay:TODAY,createdMonth:MONTH_KEY,goalId:par.parent||par.id,desc:'◎ Из целей',done:false};
+          tasks.push(synced);
+        }
+      }
+
+    } else if(a.type==='add_goal_subtask'){
+      // Subtask (checkbox) inside a task node in the graph
+      const taskNode=goalNodes.find(n=>n.id===a.taskId)
+                  || goalNodes.find(n=>n.id===createdIds[a.taskLabel])
+                  || goalNodes.filter(n=>n.type==='task').slice(-1)[0];
+      if(taskNode){
+        if(!taskNode.subtasks)taskNode.subtasks=[];
+        taskNode.subtasks.push({id:'s'+(++gsIdCtr),text:a.text,done:false});
+        results.push({icon:'☑',text:'Подзадача: '+a.text});
+      }
+
+    } else if(a.type==='add_task'){
+      // Plain task in tasknik only — not in goal graph
+      const t={id:uid(),name:a.name,desc:'',due:a.due||'',goalId:a.goalId||'',type:a.taskType||'daily',repeat:a.repeat||'none',priority:a.priority||'normal',done:false,doneDate:null,createdDay:TODAY,createdMonth:MONTH_KEY,repDow:NOW.getDay(),repDom:NOW.getDate()};
+      tasks.push(t);
+      results.push({icon:'✦',text:'Задача: '+a.name});
+    }
+  }
+  if(results.length){
+    saveGoalNodes();
+    DB.set('tasks',tasks);
+    renderHome();
+    if(currentScreen==='goals')renderGoalsScreen();
+    if(currentScreen==='tasks')renderTasksScreen();
+  }
+  return results;
+}
+
+function fmtAI(text){
+  // strip actions block from display
+  const clean=text.replace(/```actions[\s\S]*?```/g,'').trim();
+  return clean
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/g,'<b>$1</b>')
+    .replace(/\*(.*?)\*/g,'<i>$1</i>')
+    .replace(/^[•\-]\s+(.+)$/gm,'<div style="display:flex;gap:5px;margin:1px 0"><span style="color:var(--accent2);flex-shrink:0">•</span><span>$1</span></div>')
+    .replace(/\n/g,'<br>');
+}
+
+// ── Chat UI ──
+function asstTab(tab){
+  document.querySelectorAll('.asst-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.asst-pane').forEach(p=>p.classList.toggle('active',p.id==='asst-pane-'+tab));
+  if(tab==='checkin')renderCheckinPane();
+}
+
+function asstAddMsg(role,html,id){
+  const msgs=document.getElementById('asst-msgs');
+  const w=document.getElementById('asst-welcome');
+  if(w)w.remove();
+  const div=document.createElement('div');
+  div.className='amsg'+(role==='user'?' user':'');
+  if(id)div.id=id;
+  const time=new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+  div.innerHTML=`<div class="amsg-av ${role==='user'?'user':'ai'}">${role==='user'?(profile?.name||'S')[0].toUpperCase():'🤖'}</div><div><div class="amsg-bubble">${html}</div><div class="amsg-time">${time}</div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+  return div;
+}
+
+function asstTyping(){
+  const id='aty-'+Date.now();
+  asstAddMsg('ai','<span class="atyping"><span></span><span></span><span></span></span>',id);
+  return id;
+}
+
+function asstRemove(id){document.getElementById(id)?.remove();}
+function asstUpdate(id,html){const el=document.getElementById(id);if(el)el.querySelector('.amsg-bubble').innerHTML=html;}
+
+async function asstSend(){
+  if(asstBusy)return;
+  const inp=document.getElementById('asst-input');
+  const text=inp.value.trim();
+  if(!text)return;
+  inp.value='';inp.style.height='';
+  asstBusy=true;
+  document.getElementById('asst-send').disabled=true;
+  asstAddMsg('user',fmtAI(text));
+  asstHistory.push({role:'user',content:text});
+  const tid=asstTyping();
+  try{
+    const msgs=[{role:'system',content:buildSystemPrompt()},...asstHistory.slice(-10)];
+    const reply=await callAI(msgs);
+    asstHistory.push({role:'assistant',content:reply});
+    if(asstHistory.length>30)asstHistory=asstHistory.slice(-30);
+    asstRemove(tid);
+    const actions=execActions(reply);
+    let html=fmtAI(reply);
+    if(actions.length){
+      html+='<div style="margin-top:8px;display:flex;flex-wrap:wrap;">'+actions.map(a=>`<span class="aaction-pill">${a.icon} ${a.text}</span>`).join('')+'</div>';
+    }
+    asstAddMsg('ai',html);
+  }catch(e){
+    asstRemove(tid);
+    asstAddMsg('ai',`<span style="color:var(--red)">Ошибка: ${e.message}</span>`);
+  }
+  asstBusy=false;
+  document.getElementById('asst-send').disabled=false;
+}
+
+function asstQuick(text){
+  document.getElementById('asst-input').value=text;
+  asstSend();
+}
+
+function asstFinAdvice(){
+  nav('assistant');
+  setTimeout(()=>{
+    const bal=DB.get('fin_balance','');
+    asstQuick(`Дай совет по финансам. Мой текущий баланс: ${bal||'не указан'}. Помоги разобраться с приоритетами трат и накоплений.`);
+  },200);
+}
+
+// ── Checkin ──
+function openCheckin(){
+  nav('assistant');
+  setTimeout(()=>asstTab('checkin'),50);
+}
+
+function renderCheckinPane(){
+  const body=document.getElementById('checkin-body');
+  const todayStr=TODAY;
+  const lastCheckin=DB.get('last_checkin_date','');
+  const done=lastCheckin===todayStr;
+
+  if(done){
+    body.innerHTML=`
+      <div class="checkin-done-box"><span style="font-size:22px">✓</span><div><div style="font-size:13px;font-weight:600;color:var(--green);">Чекин пройден сегодня!</div><div style="font-size:11px;color:var(--text3);margin-top:2px;">Возвращайся завтра. Стрик: ${streak.count} 🔥</div></div></div>
+      <div id="checkin-ai-result"></div>`;
+    const saved=DB.get('last_checkin_result','');
+    if(saved)document.getElementById('checkin-ai-result').innerHTML=`<div class="checkin-result-box"><div class="checkin-result-title">💡 AI итог дня</div><div style="font-size:12px;color:var(--text2);line-height:1.7">${saved}</div></div>`;
+    return;
+  }
+
+  // reset state if new day
+  checkinStep=0;checkinAnswers={};
+  renderCheckinSteps(body);
+}
+
+function renderCheckinSteps(body){
+  body.innerHTML=CHECKIN_QS.map((q,i)=>{
+    const done=checkinAnswers[q.id]!==undefined;
+    const active=i===checkinStep;
+    return`<div class="checkin-q-card ${active?'active':''} ${done&&!active?'done':''}" id="cq-${i}">
+      <div class="checkin-q-num">Вопрос ${i+1} / ${CHECKIN_QS.length}</div>
+      <div class="checkin-q-text">${q.q}</div>
+      ${active?`<textarea class="checkin-q-inp" id="cq-inp-${i}" placeholder="Напиши ответ...">${checkinAnswers[q.id]||''}</textarea>
+        <button class="checkin-next-btn" onclick="checkinNext(${i})">${i===CHECKIN_QS.length-1?'Завершить →':'Следующий →'}</button>`
+      :done?`<div class="checkin-q-ans">${checkinAnswers[q.id]}</div>`:''}
+    </div>`;
+  }).join('');
+  setTimeout(()=>document.getElementById(`cq-inp-${checkinStep}`)?.focus(),80);
+}
+
+function checkinNext(i){
+  const val=document.getElementById(`cq-inp-${i}`)?.value.trim()||'—';
+  checkinAnswers[CHECKIN_QS[i].id]=val;
+  checkinStep=i+1;
+  if(checkinStep>=CHECKIN_QS.length){checkinFinish();}
+  else{renderCheckinSteps(document.getElementById('checkin-body'));}
+}
+
+async function checkinFinish(){
+  const body=document.getElementById('checkin-body');
+  body.innerHTML=`<div style="text-align:center;padding:30px"><div class="atyping" style="justify-content:center"><span></span><span></span><span></span></div><div style="font-size:11px;color:var(--text3);margin-top:10px;">AI анализирует твой день...</div></div>`;
+
+  // Mark streak
+  const last=new Date(streak.last),diff=Math.round((NOW-last)/86400000);
+  streak.count=diff<=1?streak.count+1:1;
+  streak.last=TODAY;
+  DB.set('streak',streak);
+  DB.set('last_checkin_date',TODAY);
+  checkAch('streak_7');checkAch('streak_30');
+
+  // Build prompt
+  const prompt=`Пользователь прошёл ежедневный чекин.
+День: ${checkinAnswers.day}
+Задачи: ${checkinAnswers.tasks}
+Состояние: ${checkinAnswers.mood}
+Финансы дня: ${checkinAnswers.money}
+Завтра: ${checkinAnswers.next}
+
+Дай краткий AI-итог дня (2-3 предложения) и 3 конкретных рекомендации на завтра с учётом целей. Если видишь что-то важное — скажи честно.`;
+
+  let aiResult='';
+  try{
+    aiResult=await callAI([{role:'system',content:buildSystemPrompt()},{role:'user',content:prompt}]);
+  }catch(e){aiResult='Не удалось получить AI-анализ: '+e.message;}
+
+  // Save history entry
+  const history=DB.get('checkin_history',[]);
+  const summary=`${checkinAnswers.day.slice(0,80)} | настроение: ${checkinAnswers.mood.slice(0,40)}`;
+  history.push({date:TODAY,summary,answers:checkinAnswers,aiResult});
+  if(history.length>30)history.shift();
+  DB.set('checkin_history',history);
+  DB.set('last_checkin_result',fmtAI(aiResult));
+
+  renderHome();
+  body.innerHTML=`
+    <div class="checkin-done-box"><span style="font-size:22px">✓</span><div><div style="font-size:13px;font-weight:600;color:var(--green);">Чекин пройден! Стрик: ${streak.count} 🔥</div><div style="font-size:11px;color:var(--text3);margin-top:2px;">${streak.count>=7?'Огонь! '+streak.count+' дней подряд 🔥':'Продолжай — не ломай стрик!'}</div></div></div>
+    <div class="checkin-result-box"><div class="checkin-result-title">💡 AI итог дня</div><div style="font-size:12px;color:var(--text2);line-height:1.7">${fmtAI(aiResult)}</div></div>`;
+}
+
+// Update home checkin banner
+function updateCheckinBanner(){
+  const done=DB.get('last_checkin_date','')=== TODAY;
+  const sub=document.getElementById('home-checkin-sub');
+  const icon=document.getElementById('checkin-banner-icon');
+  const badge=document.getElementById('checkin-streak-badge');
+  const card=document.getElementById('home-checkin-banner');
+  const hour=new Date().getHours();
+  if(done){
+    if(sub)sub.textContent='Чекин пройден ✓ Стрик: '+streak.count+' 🔥';
+    if(icon)icon.textContent='✅';
+    if(badge){badge.textContent=streak.count+'🔥';badge.style.background='var(--green)';}
+  } else {
+    const urgent=hour>=20;
+    if(sub)sub.textContent=urgent?'⚠️ До полуночи! Не сломай стрик':'Расскажи как прошёл день';
+    if(icon)icon.textContent=urgent?'⚠️':'🌙';
+    if(badge){badge.textContent='AI';badge.style.background='';}
+    if(card&&urgent)card.querySelector('.streak-flame')?.classList.add('streak-urgent');
+  }
+}
+
+// Patch renderHome to also update checkin banner
+const __origRenderHome=renderHome;
+renderHome=function(){__origRenderHome();updateCheckinBanner();};
+
+// aiPlaceholder no longer needed but keep for safety
+function aiPlaceholder(){asstFinAdvice();}
 
 // ══════════════════════════════════════
 // THEME TOGGLE
@@ -2354,23 +2775,19 @@ function runIntro(){
   },1600);
 }
 window.addEventListener('load',async()=>{
-  // init form states
   setTType('daily');setTRep('none');setTPri('normal');
   goalNodes.forEach(n=>ensureGP(n));
   initParticles();
   dailyReset();
   syncGoalTasksDaily();
 
-  // sync on startup
+  // pull from Gist on startup
   if(Sync.ok){
     const changed=await Sync.pull();
     if(changed){
       profile=DB.get('profile',null);
-      goalNodes=DB.get('gnodes',[]);
-      gnIdCtr=DB.get('gnid',100);
-      gsIdCtr=DB.get('gsid',100);
-      tasks=DB.get('tasks',[]);
-      xp=DB.get('xp',{cur:0,lvl:1});
+      goalNodes=DB.get('gnodes',[]);gnIdCtr=DB.get('gnid',100);gsIdCtr=DB.get('gsid',100);
+      tasks=DB.get('tasks',[]);xp=DB.get('xp',{cur:0,lvl:1});
       streak=DB.get('streak',{count:1,last:new Date().toDateString()});
       achList=DB.get('achs',null);
       goalNodes.forEach(n=>ensureGP(n));
@@ -2378,9 +2795,10 @@ window.addEventListener('load',async()=>{
   } else {
     Sync.setStatus('none','Офлайн');
   }
+  // show ⚙ indicator if AI key not set
+  updateAiKeyIndicator();
 
   runIntro();
-  // init finance inputs
   document.getElementById('fin-link-inp').value=DB.get('fin_link','')||'';
   document.getElementById('fin-bal-inp').value=DB.get('fin_balance','')||'';
   const lk=DB.get('fin_link','');
@@ -2388,122 +2806,204 @@ window.addEventListener('load',async()=>{
 });
 
 // ══════════════════════════════════════
-// SYNC UI
+// SETTINGS MODAL (AI Key + Sync)
 // ══════════════════════════════════════
-function openSyncModal(){
-  document.getElementById('sync-modal').style.display='flex';
+function updateAiKeyIndicator(){
+  const btn=document.getElementById('ai-key-btn');
+  if(!btn)return;
+  const hasKey=hasAIKey();
+  btn.style.color=hasKey?'var(--green)':'var(--yellow)';
+  btn.title=hasKey?'Настройки (AI подключён)':'Настройки (нужен AI ключ)';
+  btn.style.borderColor=hasKey?'rgba(61,220,132,.3)':'rgba(255,208,96,.3)';
+}
+
+function openSettingsModal(tab='ai'){
+  const modal=document.getElementById('settings-modal');
+  modal.style.display='flex';
+  settingsTab(tab);
+}
+function closeSettingsModal(){document.getElementById('settings-modal').style.display='none';}
+
+function settingsTab(tab){
+  document.querySelectorAll('.stab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.spane').forEach(p=>p.classList.toggle('active',p.id==='spane-'+tab));
+  if(tab==='ai') renderAiPane();
+  if(tab==='sync') renderSyncPane();
+}
+
+function renderAiPane(){
+  const key=getAIKey();
+  document.getElementById('ai-key-inp').value=key?'***скрыт***':'';
+  document.getElementById('ai-key-inp').placeholder=key?'Ключ сохранён (введи новый чтобы изменить)':'sk-or-v1-...';
+  document.getElementById('ai-key-status').innerHTML=key
+    ?`<span style="color:var(--green)">✓ AI подключён — модель: ${AI_MODEL}</span>`
+    :`<span style="color:var(--yellow)">⚠ Ключ не задан — AI не работает</span>`;
+}
+
+async function saveAiKey(){
+  const raw=document.getElementById('ai-key-inp').value.trim();
+  const err=document.getElementById('ai-key-err');
+  err.style.display='none';
+  if(!raw||raw==='***скрыт***'){err.textContent='Введи ключ';err.style.display='block';return;}
+  if(!raw.startsWith('sk-or-v1-')){err.textContent='Ключ должен начинаться с sk-or-v1-';err.style.display='block';return;}
+  const btn=document.getElementById('ai-key-save-btn');
+  btn.textContent='Проверяю...';btn.disabled=true;
+  try{
+    // quick test call
+    const r=await fetch(AI_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+raw,'HTTP-Referer':'https://sheyn.life'},
+      body:JSON.stringify({model:AI_MODEL,messages:[{role:'user',content:'ping'}],max_tokens:5})
+    });
+    if(!r.ok){const d=await r.json().catch(()=>({}));throw new Error(d.error?.message||'HTTP '+r.status);}
+    localStorage.setItem('sl__ai_key',raw);
+    updateAiKeyIndicator();
+    renderAiPane();
+    showSettingsToast('✓ AI ключ сохранён');
+  }catch(e){err.textContent='Ошибка: '+e.message;err.style.display='block';}
+  btn.textContent='Сохранить';btn.disabled=false;
+}
+
+function clearAiKey(){
+  if(!confirm('Удалить AI ключ?'))return;
+  localStorage.removeItem('sl__ai_key');
+  updateAiKeyIndicator();
+  renderAiPane();
+  showSettingsToast('Ключ удалён');
+}
+
+function renderSyncPane(){
   if(Sync.ok){
-    document.getElementById('sm-setup').style.display='none';
-    document.getElementById('sm-connected').style.display='block';
-    document.getElementById('sm-gist-show').textContent=Sync.gistId;
+    document.getElementById('spane-sync-setup').style.display='none';
+    document.getElementById('spane-sync-connected').style.display='block';
+    document.getElementById('sync-gist-show').textContent=Sync.gistId;
   } else {
-    document.getElementById('sm-setup').style.display='block';
-    document.getElementById('sm-connected').style.display='none';
-    document.getElementById('sm-token').value='';
-    document.getElementById('sm-gist').value='';
-    document.getElementById('sm-err').style.display='none';
+    document.getElementById('spane-sync-setup').style.display='block';
+    document.getElementById('spane-sync-connected').style.display='none';
+    document.getElementById('sync-token-inp').value='';
+    document.getElementById('sync-gist-inp').value='';
+    document.getElementById('sync-err').style.display='none';
   }
 }
-function closeSyncModal(){document.getElementById('sync-modal').style.display='none';}
-async function smConnect(){
-  const token=document.getElementById('sm-token').value.trim();
-  const gistInp=document.getElementById('sm-gist').value.trim();
-  const btn=document.getElementById('sm-btn');
-  const err=document.getElementById('sm-err');
+
+async function syncConnect(){
+  const token=document.getElementById('sync-token-inp').value.trim();
+  const gistInp=document.getElementById('sync-gist-inp').value.trim();
+  const err=document.getElementById('sync-err');
+  const btn=document.getElementById('sync-connect-btn');
   err.style.display='none';
-  if(!token){err.textContent='Введи токен';err.style.display='block';return;}
+  if(!token){err.textContent='Введи GitHub Token';err.style.display='block';return;}
   btn.textContent='Подключаю...';btn.disabled=true;
   try{
-    let gistId=gistInp||await Sync.createGist(token);
-    // verify
+    let gistId=gistInp;
+    if(!gistId)gistId=await Sync.createGist(token);
     const r=await fetch(`https://api.github.com/gists/${gistId}`,{headers:{Authorization:`token ${token}`}});
     if(!r.ok)throw new Error('Gist недоступен ('+r.status+')');
     Sync.save(token,gistId);
     await Sync.push();
-    openSyncModal();
+    renderSyncPane();
+    showSettingsToast('✓ Синхронизация подключена');
   }catch(e){err.textContent='Ошибка: '+e.message;err.style.display='block';}
   btn.textContent='Подключить →';btn.disabled=false;
 }
-async function smPull(){
+
+function syncDisconnect(){
+  if(!confirm('Отключить синхронизацию?'))return;
+  Sync.clear();Sync.setStatus('none','Офлайн');renderSyncPane();
+}
+
+async function syncPullNow(){
   const changed=await Sync.pull();
   if(changed){
     profile=DB.get('profile',null);
     goalNodes=DB.get('gnodes',[]);gnIdCtr=DB.get('gnid',100);gsIdCtr=DB.get('gsid',100);
     tasks=DB.get('tasks',[]);xp=DB.get('xp',{cur:0,lvl:1});
     streak=DB.get('streak',{count:1,last:new Date().toDateString()});
-    achList=DB.get('achs',null);
-    goalNodes.forEach(n=>ensureGP(n));
-    renderHome();
-    closeSyncModal();
-    smToast('✓ Данные загружены с облака');
-  } else {smToast('Данные уже актуальны');}
+    achList=DB.get('achs',null);goalNodes.forEach(n=>ensureGP(n));
+    renderHome();closeSettingsModal();
+    showSettingsToast('✓ Данные загружены с облака');
+  } else showSettingsToast('Данные уже актуальны');
 }
-async function smPush(){await Sync.push();smToast('✓ Сохранено в облако');}
-function smDisconnect(){
-  if(!confirm('Отключить синхронизацию?'))return;
-  Sync.clear();Sync.setStatus('none','Офлайн');openSyncModal();
-}
-function smCopyGist(){
-  navigator.clipboard?.writeText(Sync.gistId);smToast('Gist ID скопирован');
-}
-function smToast(msg){
-  let t=document.getElementById('sm-toast');
-  if(!t){t=document.createElement('div');t.id='sm-toast';
-    t.style.cssText='position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:9px 18px;font-size:12px;color:var(--text2);z-index:9999;transition:opacity .3s;white-space:nowrap;pointer-events:none;';
+
+async function syncPushNow(){await Sync.push();showSettingsToast('✓ Сохранено в облако');}
+function syncCopyGist(){navigator.clipboard?.writeText(Sync.gistId);showSettingsToast('Gist ID скопирован');}
+
+function showSettingsToast(msg){
+  let t=document.getElementById('st-toast');
+  if(!t){t=document.createElement('div');t.id='st-toast';
+    t.style.cssText='position:fixed;bottom:72px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:9px 18px;font-size:12px;color:var(--text2);z-index:9999;transition:opacity .3s;white-space:nowrap;pointer-events:none;';
     document.body.appendChild(t);}
   t.textContent=msg;t.style.opacity='1';
   clearTimeout(t._t);t._t=setTimeout(()=>{t.style.opacity='0';},2200);
 }
 </script>
-<!-- SYNC MODAL -->
-<div id="sync-modal" onclick="if(event.target===this)closeSyncModal()" style="position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:18px;padding:26px;width:100%;max-width:420px;">
+<!-- SETTINGS MODAL -->
+<div id="settings-modal" onclick="if(event.target===this)closeSettingsModal()" style="position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:18px;width:100%;max-width:430px;overflow:hidden;">
 
-    <!-- SETUP VIEW -->
-    <div id="sm-setup">
-      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:17px;margin-bottom:4px;">☁ Синхронизация</div>
-      <div style="font-size:11px;color:var(--text3);margin-bottom:20px;line-height:1.6;">Данные хранятся в приватном GitHub Gist и синхронизируются на всех твоих устройствах.</div>
+    <!-- Tab bar -->
+    <div style="display:flex;border-bottom:1px solid var(--border);">
+      <div class="stab active" data-tab="ai" onclick="settingsTab('ai')" style="flex:1;padding:13px;text-align:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;">🤖 AI Ключ</div>
+      <div class="stab" data-tab="sync" onclick="settingsTab('sync')" style="flex:1;padding:13px;text-align:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;">☁ Синхронизация</div>
+    </div>
+    <style>.stab.active{color:var(--accent2)!important;border-bottom-color:var(--accent)!important;}.spane{display:none;padding:22px;max-height:75vh;overflow-y:auto;}.spane.active{display:block;}</style>
 
-      <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;">GitHub Token</div>
-      <input id="sm-token" type="password" placeholder="ghp_..."
-        style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;margin-bottom:5px;transition:border-color .2s;"
-        onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter')smConnect()">
-      <div style="font-size:10px;color:var(--text3);margin-bottom:14px;">
-        Нужна только галочка <b style="color:var(--text2)">gist</b> →
-        <a href="https://github.com/settings/tokens/new?scopes=gist&description=SHEYN.LIFE" target="_blank" style="color:var(--accent2);">создать токен</a>
+    <!-- AI Key pane -->
+    <div class="spane active" id="spane-ai">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:4px;">OpenRouter API ключ</div>
+      <div style="font-size:11px;color:var(--text3);margin-bottom:16px;line-height:1.6;">Нужен для работы AI-помощника и чекина. Получи на <a href="https://openrouter.ai/keys" target="_blank" style="color:var(--accent2);">openrouter.ai/keys</a> — бесплатно.</div>
+
+      <div id="ai-key-status" style="font-size:11px;margin-bottom:14px;padding:9px 12px;background:var(--bg3);border-radius:8px;"></div>
+
+      <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;">API Ключ</div>
+      <input id="ai-key-inp" type="password" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none;margin-bottom:5px;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter')saveAiKey()">
+      <div style="font-size:10px;color:var(--text3);margin-bottom:14px;">Модель: <b style="color:var(--text2);">nvidia/nemotron-3-super-120b-a12b:free</b> (бесплатная)</div>
+
+      <div id="ai-key-err" style="font-size:11px;color:var(--red);padding:8px 12px;background:rgba(255,92,92,.07);border-radius:7px;border:1px solid rgba(255,92,92,.2);margin-bottom:10px;display:none;"></div>
+
+      <div style="display:flex;gap:8px;">
+        <button id="ai-key-save-btn" onclick="saveAiKey()" style="flex:2;background:var(--accent);border:none;color:#fff;border-radius:9px;padding:11px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Сохранить</button>
+        <button onclick="clearAiKey()" style="flex:1;background:none;border:1px solid rgba(255,92,92,.3);color:var(--red);border-radius:9px;padding:11px;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">Удалить</button>
       </div>
-
-      <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;">Gist ID <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">(пусто = создам сам)</span></div>
-      <input id="sm-gist" type="text" placeholder="Оставь пустым для нового Gist"
-        style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none;margin-bottom:14px;transition:border-color .2s;"
-        onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter')smConnect()">
-
-      <div id="sm-err" style="font-size:11px;color:var(--red);margin-bottom:10px;padding:8px 12px;background:rgba(255,92,92,.07);border-radius:7px;border:1px solid rgba(255,92,92,.2);display:none;"></div>
-
-      <button id="sm-btn" onclick="smConnect()" style="width:100%;background:var(--accent);border:none;color:#fff;border-radius:9px;padding:12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;">Подключить →</button>
-      <div style="text-align:center;font-size:11px;color:var(--text3);cursor:pointer;" onclick="closeSyncModal()">Закрыть</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--text3);cursor:pointer;" onclick="closeSettingsModal()">Закрыть</div>
     </div>
 
-    <!-- CONNECTED VIEW -->
-    <div id="sm-connected" style="display:none;">
-      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:17px;margin-bottom:16px;">☁ Синхронизация</div>
-      <div style="background:rgba(61,220,132,.07);border:1px solid rgba(61,220,132,.2);border-radius:10px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
-        <span style="font-size:20px;">✓</span>
-        <div><div style="font-size:12px;font-weight:600;color:var(--green);">Синхронизация активна</div>
-        <div style="font-size:10px;color:var(--text3);margin-top:2px;">Авто-сохранение через 3 сек после изменений</div></div>
+    <!-- Sync pane -->
+    <div class="spane" id="spane-sync">
+      <!-- setup -->
+      <div id="spane-sync-setup">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:4px;">GitHub Gist синхронизация</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:18px;line-height:1.6;">Все данные хранятся в приватном Gist и синхронизируются между твоими устройствами.</div>
+
+        <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;">GitHub Token (права: только gist)</div>
+        <input id="sync-token-inp" type="password" placeholder="ghp_..." style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none;margin-bottom:5px;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+        <div style="font-size:10px;color:var(--text3);margin-bottom:14px;"><a href="https://github.com/settings/tokens/new?scopes=gist&description=SHEYN.LIFE" target="_blank" style="color:var(--accent2);">Создать токен</a> — нужна только галочка <b style="color:var(--text2);">gist</b></div>
+
+        <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;">Gist ID <span style="font-weight:400;text-transform:none;font-size:10px;">(пусто = создам новый)</span></div>
+        <input id="sync-gist-inp" type="text" placeholder="Оставь пустым или вставь ID с другого устройства" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;outline:none;margin-bottom:14px;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+
+        <div id="sync-err" style="font-size:11px;color:var(--red);padding:8px 12px;background:rgba(255,92,92,.07);border-radius:7px;border:1px solid rgba(255,92,92,.2);margin-bottom:10px;display:none;"></div>
+        <button id="sync-connect-btn" onclick="syncConnect()" style="width:100%;background:var(--accent);border:none;color:#fff;border-radius:9px;padding:11px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;">Подключить →</button>
+        <div style="text-align:center;font-size:11px;color:var(--text3);cursor:pointer;" onclick="closeSettingsModal()">Закрыть</div>
       </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
-        <button onclick="smPull()" style="background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">↓ Загрузить</button>
-        <button onclick="smPush()" style="background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">↑ Сохранить</button>
+      <!-- connected -->
+      <div id="spane-sync-connected" style="display:none;">
+        <div style="background:rgba(61,220,132,.07);border:1px solid rgba(61,220,132,.2);border-radius:10px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:20px;">✓</span>
+          <div><div style="font-size:12px;font-weight:600;color:var(--green);">Синхронизация активна</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:2px;">Авто-сохранение через 3 сек после изменений</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+          <button onclick="syncPullNow()" style="background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">↓ Загрузить</button>
+          <button onclick="syncPushNow()" style="background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">↑ Сохранить</button>
+        </div>
+        <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;">Gist ID — скопируй на другое устройство</div>
+        <div id="sync-gist-show" onclick="syncCopyGist()" style="background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);word-break:break-all;margin-bottom:14px;cursor:pointer;" title="Нажми чтобы скопировать"></div>
+        <button onclick="syncDisconnect()" style="width:100%;background:none;border:1px solid rgba(255,92,92,.3);color:var(--red);border-radius:9px;padding:9px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;cursor:pointer;margin-bottom:8px;">Отключить</button>
+        <div style="text-align:center;font-size:11px;color:var(--text3);cursor:pointer;" onclick="closeSettingsModal()">Закрыть</div>
       </div>
-
-      <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;">Gist ID — вставь на другом устройстве</div>
-      <div id="sm-gist-show" onclick="smCopyGist()" style="background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);word-break:break-all;margin-bottom:14px;cursor:pointer;" title="Нажми чтобы скопировать"></div>
-
-      <button onclick="smDisconnect()" style="width:100%;background:none;border:1px solid rgba(255,92,92,.3);color:var(--red);border-radius:9px;padding:9px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;cursor:pointer;margin-bottom:8px;">Отключить</button>
-      <div style="text-align:center;font-size:11px;color:var(--text3);cursor:pointer;" onclick="closeSyncModal()">Закрыть</div>
     </div>
+
   </div>
 </div>
 
